@@ -1,0 +1,23 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name and surname</th>
+        <th>E-mail address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ student.name }}</td>
+        <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+        <td>
+          <a href="#" class="button button-green">Edit</a>
+          <button class="button button-red" (click)="deleteStudent()">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
