@@ -1,27 +1,39 @@
 # StudentApp
+1. Krijo nje aplikacion te ri te quajtur student-app
+ng new student-app
+npm install
+ng serve --open
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.9.
+2. Krijo nje komponent te ri te quajtur students
+ng g c student
 
-## Development server
+3.  Shto  komponentin e ri students tek komponenti AppComponent
+ <app-student></app-student>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+6. Krijo nje servis te ri quajtur Student
+Folder i ri services ne app
+ng g s Student 
 
-## Code scaffolding
+7. Krijo nje interface te quajtur Student qe permban {id, name, email}
+Folder i ri interfaces ne app
+ng g i Student
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+8. Krijo nje metode tek servisi te quajtur getStudents per te marr listen me studenta -> https://jsonplaceholder.typicode.com/users
+import { HttpClientModule } from '@angular/common/http'; ne modules
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Student } from '../interfaces/student'; ne service
+constructor(private http: HttpClient) { }
+  getStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(this.apiUrl);
+  }
 
-## Build
+9. Therrisni metoden getStudents tek komponenti students
+import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../services/student.service';
+import { Student } from '../interfaces/student'; ne student component
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+10. Ndryshoni html tek komponenti ku te perdorni nje loop per te printuar te gjith studentet
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+11. Butoni delete kur e klikon te printoje mesazhin "Studenti u fshi"
+ 
