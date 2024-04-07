@@ -1,4 +1,11 @@
 <section>
+
+  <form (submit)="postStudents()">
+<input class="input" type="text" name="emri" placeholder="emri i studentit" [(ngModel)]="newStudent.name">
+<input class="input" type="email" name="email" placeholder="email i studentit" [(ngModel)]="newStudent.email">
+<button class="input" class="button add_button"  type="submit">Add</button>
+</form>
+
   <table>
     <thead>
       <tr>
@@ -14,8 +21,8 @@
         <td>{{ student.name }}</td>
         <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
         <td>
-          <a href="#" class="button button-green">Edit</a>
-          <button class="button button-red" (click)="deleteStudent()">Delete</button>
+          <a href="#" class="button button-green"  (click)="postStudents()">Edit</a>
+          <button class="button button-red" (click)="deleteStudents(student.id)">Delete</button>
         </td>
       </tr>
     </tbody>

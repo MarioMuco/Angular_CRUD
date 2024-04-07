@@ -10,6 +10,9 @@ import { Student } from '../interfaces/student';
 export class StudentComponent implements OnInit{
 
   students: Student[] = [];
+  newStudent: Student = { id: 0, name: '', email: '' }; // Studenti i ri për të postuar
+  editingIndex: number = -1; //-1 student is being edited
+
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
@@ -21,8 +24,32 @@ export class StudentComponent implements OnInit{
       .subscribe(students => this.students = students);
   }
 
-  deleteStudent() : void {
-    alert("Studenti do te fshihet");
+  postStudents() : void{
+this.studentService.postStudents(this.newStudent)
+      .subscribe(student => {
+        this.students.push(student); // Shto studentin e ri në listën lokale
+        this.newStudent = { id: 0, name: '', email: '' }; // Rikthe studentin e ri në gjendjen fillestare
+      });
+  }
+
+  putStudents(student: Student): void {
+    this.studentService.putStudents(student)
+      .subscribe(updatedStudent => {
+        // Gjej indeksin e studentit të ndryshuar në listën lokale
+        const index = this.students.findIndex(s => s.id === updatedStudent.id);
+        if (index !== -1) {
+          // Nëse studenti është gjetur, zëvendësoje të dhënat e tij në listën lokale
+          this.students[index] = updatedStudent;
+        }
+      });
+  }
+
+  deleteStudents(studentId: number): void {
+    this.studentService.deleteStudents(studentId)
+      .subscribe(() => {
+        // Fshij studentin nga lista lokale
+        this.students = this.students.filter(s => s.id !== studentId);
+      });
   }
 
 }

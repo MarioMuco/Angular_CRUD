@@ -15,7 +15,18 @@ export class StudentService {
     return this.http.get<Student[]>(this.apiUrl);
   }
 
-  deleteStudent() : void {
-    alert("Studenti do te fshihet")
+  postStudents(student: Student): Observable<Student> {
+    return this.http.post<Student>(this.apiUrl, student);
   }
+
+  putStudents(student: Student): Observable<Student> {
+    const url = `${this.apiUrl}/${student.id}`;
+    return this.http.put<Student>(url, student);
+  }
+
+  deleteStudents(studentId: number): Observable<Student> {
+    const url = `${this.apiUrl}/${studentId}`;
+    return this.http.delete<Student>(url);
+  }
+
 }
