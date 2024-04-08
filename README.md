@@ -37,3 +37,5 @@ import { Student } from '../interfaces/student'; ne student component
 
 11. Butoni delete kur e klikon te printoje mesazhin "Studenti u fshi"
  
+-------------------------------------------------------------------------------------
+1. Krijo metodat postStudent, putStudent, deleteStudent
