@@ -38,4 +38,8 @@ import { Student } from '../interfaces/student'; ne student component
 11. Butoni delete kur e klikon te printoje mesazhin "Studenti u fshi"
  
 -------------------------------------------------------------------------------------
-1. Krijo metodat postStudent, putStudent, deleteStudent
+1. Krijo metod postStudent, putStudent, deleteStudent
+
+2. Support for nonexistent route
+
+3. Shto fushen username tek tabela e studentit

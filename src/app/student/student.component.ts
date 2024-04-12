@@ -11,12 +11,31 @@ export class StudentComponent implements OnInit{
 
   students: Student[] = [];
   newStudent: Student = { id: 0, name: '',username : '', email: '' }; // Studenti i ri për të postuar
-  editingIndex: number = -1; //-1 student is being edited
+  selectedStudent: Student = { id: 0, name: '', username: '', email: '' };
+  editingIndex : number = 0;
+
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.getStudents();
+  }
+
+  editStudent(index: number): void {
+    this.selectedStudent = { ...this.students[index] }; 
+    this.editingIndex = index; 
+  }
+  
+  cancelEdit(): void {
+    this.selectedStudent = { id: 0, name: '', username: '', email: '' }; 
+    this.editingIndex = -1; 
+  }
+
+  onEditSubmit(): void {
+    if (this.selectedStudent.id !== 0) {
+      this.putStudents(this.selectedStudent); //therritet funksioni putstudents
+      this.cancelEdit(); 
+    }
   }
 
   getStudents(): void {

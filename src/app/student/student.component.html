@@ -10,6 +10,16 @@
 </form>
 <br>
 
+<br>
+<form *ngIf="editingIndex !== -1" (submit)="onEditSubmit()">
+  <label style="font-size: 25px;"><strong>Edit student:  </strong></label>
+  <input type="text" class="input" name="name" [(ngModel)]="selectedStudent.name" placeholder="Name">
+  <input type="text" class="input" name="username" [(ngModel)]="selectedStudent.username" placeholder="Username">
+  <input type="email" class="input" name="email" [(ngModel)]="selectedStudent.email" placeholder="Email">
+  <button type="submit" class="input button save_button">Save</button>
+  <button type="button" class="input button save_button"  (click)="cancelEdit()">Cancel</button>
+</form>
+<br>
 
   <table>
     <thead>
@@ -28,10 +38,18 @@
         <td>{{student.username}}</td>
         <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
         <td>
-          <a href="#" class="button button-green"  (click)="postStudents()">Edit</a>
+          <a href="#" class="button button-green" (click)="editStudent(i)">Edit</a>
           <button class="button button-red" (click)="deleteStudents(student.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+
+
+
 </section>
+
+
+
+

@@ -44,15 +44,7 @@
     font-size: 16px;
     cursor: pointer;
   }
-  /* Button on mouse hover*/
-  .button:hover {
-    background: #888888;
-  }
-  /* Button in active state */
-  .button:active,
-  .button:focus {
-    background: #777777;
-  }
+ 
   
   /* Green button */
   .button-green {
@@ -92,6 +84,14 @@
 
   .add_button:hover{
     background-color: rgb(37, 135, 148);
+  }
+
+  .save_button {
+    background-color: rgb(101, 231, 25);
+  }
+
+  .save_button:hover {
+    background-color: rgb(93, 199, 32);
   }
 
   .input {
