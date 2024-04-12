@@ -1,16 +1,22 @@
 <section>
 
+  <br>
   <form (submit)="postStudents()">
+    <label style="font-size: 25px;"><strong>Add new student:  </strong></label>
 <input class="input" type="text" name="emri" placeholder="emri i studentit" [(ngModel)]="newStudent.name">
+<input class="input" type="text" name="username" placeholder="username i studentit" [(ngModel)]="newStudent.username">
 <input class="input" type="email" name="email" placeholder="email i studentit" [(ngModel)]="newStudent.email">
 <button class="input" class="button add_button"  type="submit">Add</button>
 </form>
+<br>
+
 
   <table>
     <thead>
       <tr>
         <th>#</th>
         <th>Name and surname</th>
+        <th>Username</th>
         <th>E-mail address</th>
         <th>Actions</th>
       </tr>
@@ -19,6 +25,7 @@
       <tr *ngFor="let student of students; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ student.name }}</td>
+        <td>{{student.username}}</td>
         <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
         <td>
           <a href="#" class="button button-green"  (click)="postStudents()">Edit</a>

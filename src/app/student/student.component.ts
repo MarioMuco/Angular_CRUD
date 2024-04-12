@@ -10,7 +10,7 @@ import { Student } from '../interfaces/student';
 export class StudentComponent implements OnInit{
 
   students: Student[] = [];
-  newStudent: Student = { id: 0, name: '', email: '' }; // Studenti i ri për të postuar
+  newStudent: Student = { id: 0, name: '',username : '', email: '' }; // Studenti i ri për të postuar
   editingIndex: number = -1; //-1 student is being edited
 
   constructor(private studentService: StudentService) { }
@@ -28,7 +28,7 @@ export class StudentComponent implements OnInit{
 this.studentService.postStudents(this.newStudent)
       .subscribe(student => {
         this.students.push(student); // Shto studentin e ri në listën lokale
-        this.newStudent = { id: 0, name: '', email: '' }; // Rikthe studentin e ri në gjendjen fillestare
+        this.newStudent = { id: 0, name: '',username : '', email: '' }; // Rikthe studentin e ri në gjendjen fillestare
       });
   }
 
